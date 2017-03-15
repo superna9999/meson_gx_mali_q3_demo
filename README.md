@@ -52,3 +52,8 @@ Catch U-boot prompt and run :
 # setenv bootcmd setenv bootargs console=ttyAML0,115200 consoleblank=0 root=/dev/mmcblk1p2 rootwait rw\;mmc info\;fatload mmc 1 0x1000000 meson-gxbb-odroidc2.dtb\;fatload mmc 1 0x01080000 uImage\;bootm 0x01080000 - 0x1000000
 # run bootcmd
 ```
+
+From Linux console :
+```
+$ ioq3-meson-gx/build/release-linux-aarch64/ioquake3.aarch64
+```
