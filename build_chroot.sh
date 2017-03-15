@@ -4,7 +4,7 @@ set -e
 
 apt update
 apt -y install ubuntu-standard build-essential
-apt -y install unzip libasound2-dev
+apt -y install unzip libasound2-dev libudev-dev
 
 locale-gen en_US.UTF-8
 dpkg-reconfigure locales
