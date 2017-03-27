@@ -1,0 +1,10 @@
+stop on (stopping plymouth
+         or stopping plymouth-shutdown)     
+ 
+console output
+ 
+exec plymouth-upstart-bridge
+
+script
+         sleep 2
+end script

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+mkdir -p /mnt/run
+mount -o bind /run /mnt/run
+echo 'nameserver 8.8.4.4' | tee -a /etc/resolv.conf
+mount -t proc none /proc/
+
 set -e
 
 apt update
@@ -10,7 +15,11 @@ locale-gen en_US.UTF-8
 dpkg-reconfigure locales
 echo "root:root" | chpasswd
 echo demo > /etc/hostname
-echo ttyAML0 > /etc/securetty
+echo ttyAML0 >> /etc/securetty
+echo tty0 >> /etc/securetty
+
+cat /plymouth-upstart-bridge.conf.add >> /etc/init/plymouth-upstart-bridge.conf
+rm /plymouth-upstart-bridge.conf.add
 
 cd root
 
@@ -58,5 +67,10 @@ tar xvfz baseq3-demo.tar.gz
 mkdir -p .q3a/baseq3
 mv baseq3-demo/* .q3a/baseq3/
 rm -fr baseq3-demo baseq3-demo.tar.gz
+
+set +e
+
+umount /proc
+umount /mnt/run
 
 exit 0

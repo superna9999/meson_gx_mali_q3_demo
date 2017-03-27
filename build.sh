@@ -16,6 +16,11 @@ sudo chmod +x rootfs/usr/bin/build_chroot.sh
 # do it now
 sudo cp ttyAML0.conf rootfs/etc/init/
 
+# plymouth/policy-rc fixups
+sudo cp policy-rc.d rootfs/usr/sbin/
+sudo chmod +x rootfs/usr/sbin/policy-rc.d
+sudo cp plymouth-upstart-bridge.conf.add rootfs/
+
 sudo chroot rootfs build_chroot.sh
 
 wget https://releases.linaro.org/components/toolchain/binaries/6.3-2017.02/aarch64-linux-gnu/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu.tar.xz
