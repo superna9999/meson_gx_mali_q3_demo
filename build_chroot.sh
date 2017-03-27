@@ -8,7 +8,7 @@ apt -y install unzip libasound2-dev libudev-dev
 
 locale-gen en_US.UTF-8
 dpkg-reconfigure locales
-passwd
+echo "root:root" | chpasswd
 echo demo > /etc/hostname
 echo ttyAML0 > /etc/securetty
 
